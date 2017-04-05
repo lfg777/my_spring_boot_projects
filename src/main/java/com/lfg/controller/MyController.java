@@ -37,6 +37,7 @@ public class MyController {
         model.addAttribute("singlePerson",single);
         model.addAttribute("people",people);
         model.addAttribute("hello",hello);
+
         return "hello";
     }
 

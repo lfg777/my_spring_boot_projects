@@ -16,6 +16,7 @@ public class LambdaComparator {
         System.out.println(peoples);
         Function<Person, Integer> getAge = Person::getAge;
         Comparator<Person> byAge = Comparator.comparing(getAge);
+        Comparator<Person> tComparator = Comparator.nullsFirst(byAge);
 
         //升序-age实现了Comparable接口
         List<Person> collect = peoples.stream().sorted(byAge).collect(Collectors.toList());

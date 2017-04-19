@@ -17,13 +17,19 @@ public class LambdaComparator {
         Function<Person, Integer> getAge = Person::getAge;
         Comparator<Person> byAge = Comparator.comparing(getAge);
 
-        //升序
+        //升序-age实现了Comparable接口
         List<Person> collect = peoples.stream().sorted(byAge).collect(Collectors.toList());
         System.out.println(collect);
 
-        //降序
+        //降序-age实现了Comparable接口
         List<Person> collect1 = peoples.stream().sorted(byAge.reversed()).collect(Collectors.toList());
         System.out.println(collect1);
+
+        //升序-name没有实现Comparable接口
+        /*Comparator<Address> cmpAddr = Comparator.comparing(Address::getAddress);
+        Comparator<Person> byAddress = Comparator.comparing(Person::getAddress, cmpAddr);
+        List<Student> sortedAddressList = students.stream().sorted(byAddress).collect(Collectors.toList());
+        System.out.println(sortedAddressList);*/
 
     }
 

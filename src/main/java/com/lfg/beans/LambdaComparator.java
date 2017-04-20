@@ -23,7 +23,7 @@ public class LambdaComparator {
         System.out.println(collect);
 
         //降序-age实现了Comparable接口
-        List<Person> collect1 = peoples.stream().sorted(byAge.reversed()).collect(Collectors.toList());
+        List<Person> collect1 = peoples.stream().sorted(tComparator.reversed()).collect(Collectors.toList());
         System.out.println(collect1);
 
         //升序-name没有实现Comparable接口

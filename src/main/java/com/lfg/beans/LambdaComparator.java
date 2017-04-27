@@ -31,6 +31,9 @@ public class LambdaComparator {
         Comparator<Person> byAddress = Comparator.comparing(Person::getAddress, cmpAddr);
         List<Student> sortedAddressList = students.stream().sorted(byAddress).collect(Collectors.toList());
         System.out.println(sortedAddressList);*/
+        System.out.println("============");
+        // 解释:从字符串序列中过滤出以字符a开头的字符串并迭代打印输出
+        peoples.stream().filter((s)->s.getName().startsWith("d")).forEach(System.out::println);
 
     }
 
@@ -40,7 +43,9 @@ public class LambdaComparator {
         Person p2 = new Person("b",4);
         Person p3 = new Person("c",1);
         Person p4 = new Person("d",5);
-        List<Person> list = Arrays.asList(p1, p2, p3, p4);
+        Person p5 = new Person("deeww",6);
+        Person p6 = new Person("d343",9);
+        List<Person> list = Arrays.asList(p1, p2, p3, p4,p5,p6);
         return list;
     }
 }

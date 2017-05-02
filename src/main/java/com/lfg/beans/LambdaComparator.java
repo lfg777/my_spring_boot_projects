@@ -14,6 +14,7 @@ public class LambdaComparator {
         lc.sortReversed();
         lc.filters();
         lc.delOneFromList();
+        lc.getMaxItem();
     }
 
 
@@ -36,6 +37,9 @@ public class LambdaComparator {
         List<Person> sortedList = peoples.stream().sorted(Comparator.nullsLast(Comparator.comparing(Person::getAge)).reversed()).collect(Collectors.toList());
         System.out.println(sortedList);
         System.out.println("===");
+        //并行方式
+        //peoples.parallelStream().sorted(Comparator.comparing(Person::getAge)).collect(Collectors.toList());
+
     }
 
     public  static List<Person> buildList(){
@@ -71,15 +75,16 @@ public class LambdaComparator {
     public void delOneFromList(){
         //不能用Arrays.asList(); iterator.remove()在list中默认抛出异常
         List<Person> peoples = buildArrayList();
-        Iterator<Person> iterator = peoples.iterator();
-        while (iterator.hasNext()) {
-            Person p = iterator.next();
-            if (p.getAge() == 6) {
-                iterator.remove();
-            }
-        }
+        peoples.removeIf(p -> p.getAge() == 6);
         System.out.println(peoples);
         System.out.println("===");
 
+    }
+
+    public void getMaxItem(){
+        List<Person> peoples = buildList();
+        Person person = peoples.stream().max(Comparator.comparing(Person::getAge)).get();
+        System.out.println(person);
+        System.out.println("===");
     }
 }

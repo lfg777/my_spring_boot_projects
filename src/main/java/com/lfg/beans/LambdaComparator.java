@@ -27,6 +27,8 @@ public class LambdaComparator {
         List<Person> peoples = buildList();
         peoples.stream().filter((s)->s.getName().startsWith("d")).forEach(System.out::println);
         System.out.println("===");
+
+
     }
 
     /**

@@ -1,6 +1,8 @@
 package com.lfg.controller;
 
+import com.lfg.beans.DataSourceProperties;
 import com.lfg.beans.Person;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +24,9 @@ public class MyController {
     @Value("${application.count}")
     private int count;
 
+    @Autowired
+    private DataSourceProperties dataSourceProperties;
+
     @RequestMapping("/{name}")
     public String getHello(@PathVariable String name){
         return "hello "+name;
@@ -41,6 +46,7 @@ public class MyController {
         model.addAttribute("people",people);
         model.addAttribute("hello",hello);
         model.addAttribute("count",count);
+        model.addAttribute("properties",dataSourceProperties.getUrl());
 
         return "hello";
     }

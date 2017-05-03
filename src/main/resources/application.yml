@@ -1,11 +1,12 @@
 application:
     hello: hello Angel from application
+    count: ${random.int(100)}
 server:
     port: 8081
 spring:
   thymeleaf:
     suffix: .html
-    prefix: /views/
+    prefix: views/
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver

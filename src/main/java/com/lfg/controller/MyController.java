@@ -19,6 +19,9 @@ public class MyController {
     @Value("${application.hello}")
     private String hello;
 
+    @Value("${application.count}")
+    private int count;
+
     @RequestMapping("/{name}")
     public String getHello(@PathVariable String name){
         return "hello "+name;
@@ -37,6 +40,7 @@ public class MyController {
         model.addAttribute("singlePerson",single);
         model.addAttribute("people",people);
         model.addAttribute("hello",hello);
+        model.addAttribute("count",count);
 
         return "hello";
     }

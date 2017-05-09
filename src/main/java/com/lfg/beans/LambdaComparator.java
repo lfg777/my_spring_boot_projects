@@ -15,6 +15,7 @@ public class LambdaComparator {
         lc.filters();
         lc.delOneFromList();
         lc.getMaxItem();
+        lc.filter();
     }
 
 
@@ -51,8 +52,10 @@ public class LambdaComparator {
         Person p3 = new Person("c",1);
         Person p4 = new Person("d",5);
         Person p5 = new Person("deeww",6);
+        Person p7 = new Person("deeww",6);
         Person p6 = new Person("d343",9);
-        List<Person> list = Arrays.asList(p1, p2, p3, p4,p5,p6);
+        Person p8 = new Person("d343",9);
+        List<Person> list = Arrays.asList(p1, p2, p3, p4,p5,p6,p7,p8);
         return list;
     }
 
@@ -88,5 +91,19 @@ public class LambdaComparator {
         Person person = peoples.stream().max(Comparator.comparing(Person::getAge)).get();
         System.out.println(person);
         System.out.println("===");
+    }
+
+    public void filter(){
+        List<Person> people = buildList();
+        Set<String> set = new HashSet<>();
+        List<Person> ret = new ArrayList<>();
+        //筛选过滤
+        //people.stream().forEach(o-> set.add(o.getName()));
+        people.stream().filter((o)->!set.contains(o.getName())).forEach(o->{
+            set.add(o.getName());
+            ret.add(o);
+        });
+
+        System.out.println(ret);
     }
 }

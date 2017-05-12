@@ -16,6 +16,7 @@ public class LambdaComparator {
         lc.delOneFromList();
         lc.getMaxItem();
         lc.filter();
+        lc.tet();
     }
 
 
@@ -64,6 +65,7 @@ public class LambdaComparator {
         Person p2 = new Person("b",4);
         Person p3 = new Person("c",1);
         Person p4 = new Person("d",5);
+        Person p8 = new Person("d",5);
         Person p5 = new Person("deeww",6);
         Person p6 = new Person("d343",9);
         Person p7 = new Person("wddlakd",6);
@@ -74,6 +76,8 @@ public class LambdaComparator {
         peoples.add(p4);
         peoples.add(p5);
         peoples.add(p6);
+        peoples.add(p7);
+        peoples.add(p8);
         return peoples;
     }
 
@@ -105,7 +109,21 @@ public class LambdaComparator {
         });
 
         System.out.println(ret);
+        System.out.println("===");
     }
+
+    public void tet(){
+        List<Person> people = buildArrayList();
+        System.out.println(people);
+        List<Person> people1 = people.subList(0, 4);
+        System.out.println(people1);
+        people.removeAll(people1);
+
+        System.out.println(people);
+
+
+    }
+
 
 
 }

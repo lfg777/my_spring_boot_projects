@@ -29,5 +29,11 @@ public class Jdk8ForEachTimeCustoming {
 
             long c=System.currentTimeMillis();
             System.out.println(c-b);//JDK8的时间2
+        Double er = Double.valueOf(3);
+        er+=2;
+        int bda = (int)(2/er*11);
+        System.out.println(bda);
         }
+
+
 }

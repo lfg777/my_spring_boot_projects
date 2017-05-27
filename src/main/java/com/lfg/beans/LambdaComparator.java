@@ -116,10 +116,14 @@ public class LambdaComparator {
         List<Person> people = buildArrayList();
         System.out.println(people);
         List<Person> people1 = people.subList(0, 4);
+        List<Person> people2 = people1;
         System.out.println(people1);
-        people.removeAll(people1);
+        System.out.println(people2);
 
+        people.removeAll(people1);
         System.out.println(people);
+        System.out.println(people2);
+
 
 
     }

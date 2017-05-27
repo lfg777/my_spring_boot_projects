@@ -4,11 +4,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.cache.annotation.EnableCaching;
 
 /**
  * Created by lifengguang on 2017/1/18.
  */
 @SpringBootApplication
+@EnableCaching
 public class MyApplication extends SpringBootServletInitializer {
 
     @Override

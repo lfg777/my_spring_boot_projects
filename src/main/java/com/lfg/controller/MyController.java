@@ -2,12 +2,15 @@ package com.lfg.controller;
 
 import com.lfg.beans.DataSourceProperties;
 import com.lfg.beans.Person;
+import com.lfg.service.TestForCacheable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +29,9 @@ public class MyController {
 
     @Autowired
     private DataSourceProperties dataSourceProperties;
+
+    @Autowired
+    private TestForCacheable testForCacheable;
 
     @RequestMapping("/{name}")
     public String getHello(@PathVariable String name){
@@ -49,6 +55,13 @@ public class MyController {
         model.addAttribute("properties",dataSourceProperties.getUrl());
 
         return "hello";
+    }
+
+    @RequestMapping("/testForCacheable")
+    @ResponseBody
+    public String testForCacheable(@RequestParam("index") int index){
+
+        return testForCacheable.test(index);
     }
 
 

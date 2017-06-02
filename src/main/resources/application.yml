@@ -2,7 +2,7 @@ application:
     hello: hello Angel from application
     count: ${random.int(100)}
 server:
-    port: 8081
+    port: 8078
 spring:
   thymeleaf:
     suffix: .html

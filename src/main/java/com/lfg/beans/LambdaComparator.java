@@ -17,6 +17,7 @@ public class LambdaComparator {
         lc.getMaxItem();
         lc.filter();
         lc.tet();
+
     }
 
 

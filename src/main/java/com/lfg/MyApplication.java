@@ -1,5 +1,6 @@
 package com.lfg;
 
+import org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -9,7 +10,7 @@ import org.springframework.cache.annotation.EnableCaching;
 /**
  * Created by lifengguang on 2017/1/18.
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = {MybatisAutoConfiguration.class})
 @EnableCaching
 public class MyApplication extends SpringBootServletInitializer {
 

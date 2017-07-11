@@ -1,5 +1,6 @@
 package com.lfg.controller;
 
+import com.lfg.annotations.NcCat;
 import com.lfg.beans.DataSourceProperties;
 import com.lfg.beans.Person;
 import com.lfg.service.TestForCacheable;
@@ -39,6 +40,7 @@ public class MyController {
     }
 
     @RequestMapping("/")
+    @NcCat
     public String index(Model model){
         Person single=new Person("aa",1);
         List<Person> people=new ArrayList<Person>();

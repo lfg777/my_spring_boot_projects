@@ -6,6 +6,8 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -19,11 +21,15 @@ import java.util.Arrays;
 
 @Aspect
 @Service
+@Order(3)
 public class WebLogAspect {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private ThreadLocal<Long> startTime = new ThreadLocal<Long>();
+
+    @Value("${application.hello}")
+    private String heoo;
 
     @Before("execution(public * com.lfg.controller..*.*(..))")
     public void doBefore(JoinPoint joinPoint){

@@ -44,6 +44,7 @@ public class WebLogAspect {
     @AfterReturning(returning = "ret",pointcut = "execution(public * com.lfg.controller..*.*(..))")
     public void doAfterReturning(Object ret) throws Throwable{
         logger.info("响应信息:【"+ ret+"耗时:"+(System.currentTimeMillis()-startTime.get())+"ms】");
+        startTime.remove();
     }
 
 }

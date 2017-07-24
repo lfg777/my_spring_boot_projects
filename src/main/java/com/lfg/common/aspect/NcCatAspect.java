@@ -26,6 +26,7 @@ public class NcCatAspect {
         String methodName = pjp.getSignature().getName();
         Object retVal = null;
         try {
+            System.out.println("=========around aspect is expected");
             retVal = pjp.proceed();
         } catch (Exception e) {
             throw e;

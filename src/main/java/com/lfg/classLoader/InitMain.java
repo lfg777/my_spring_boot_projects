@@ -1,5 +1,4 @@
-package org.jvmcore.classloader;
-
+package com.lfg.classLoader;
 /*
  * Copyright [2015] [Jeff Lee]
  *
@@ -24,12 +23,18 @@ package org.jvmcore.classloader;
  *   input: java -XX:+TraceClassLoading 加载信息
  */
 class Parent {
+    Parent(){
+        System.out.println("p is init");
+    }
     static {
         System.out.println("Parent init");
     }
     public static int v = 100;
 }
 class Child extends Parent {
+    Child(){
+        System.out.println("C is init");
+    }
     static {
         System.out.println("Child  init");
     }

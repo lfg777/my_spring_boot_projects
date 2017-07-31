@@ -31,6 +31,15 @@ spring:
     useGlobalDataSourceStat: true
   profiles:
     active: dev
+  redis:
+    pool:
+      maxIdle: 20
+      minIdle: 10
+      maxActive: 50
+      maxWait: 120000
+    cachecloud:
+      appid: 10007
+      domain_url: http://172.17.5.93:8080
 logging:
   config: classpath:logback.xml
   path: d:\log\

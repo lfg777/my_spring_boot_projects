@@ -3,6 +3,7 @@ package com.lfg.beans;
 import java.io.IOException;
 import java.nio.file.*;
 
+import static java.nio.file.StandardWatchEventKinds.ENTRY_DELETE;
 import static java.nio.file.StandardWatchEventKinds.ENTRY_MODIFY;
 
 /**
@@ -44,7 +45,7 @@ public class WatchServiceFilterDemo implements Runnable {
     private void startWatcher(String absFilePath, String fileName) throws IOException {
         final WatchService watchService = FileSystems.getDefault().newWatchService();
         Path path = Paths.get(absFilePath);
-        path.register(watchService, ENTRY_MODIFY);
+        path.register(watchService, ENTRY_MODIFY,ENTRY_DELETE);
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             try {
                 watchService.close();

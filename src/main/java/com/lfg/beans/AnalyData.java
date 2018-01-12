@@ -10,9 +10,9 @@ import java.util.List;
  */
 public class AnalyData {
 
-    static String oldFilePath = "C:\\Users\\lifengguang\\Desktop\\a.txt";
+    static String oldFilePath = "C:\\Users\\lifengguang\\Desktop\\b.txt";
 
-     static String newFilePath = "C:\\Users\\lifengguang\\Desktop\\b.txt";
+     static String newFilePath = "C:\\Users\\lifengguang\\Desktop\\a.txt";
 
     static List<Object> list = new ArrayList<>();
 
@@ -37,14 +37,15 @@ public class AnalyData {
 
 
         }
-        System.out.println(oldPath.substring(oldPath.indexOf(".txt")-1)+"有"+newPath.substring(newPath.indexOf(".txt")-1)+"没有："+list);
+        System.out.println(oldPath.substring(oldPath.indexOf(".txt")-3)+"有"+newPath.substring(newPath.indexOf(".txt")-3)+"没有："+list);
         list.clear();
 
     }
 
     public static void main(String[] args) throws Exception {
-        AnalyData.compare(oldFilePath,newFilePath);
-        AnalyData.compare(newFilePath,oldFilePath);
+        /*AnalyData.compare(oldFilePath,newFilePath);
+        AnalyData.compare(newFilePath,oldFilePath);*/
+        System.out.println(System.getProperty("sun.boot.class.path"));
     }
 
 }

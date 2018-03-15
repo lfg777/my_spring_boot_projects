@@ -35,11 +35,12 @@ public class MyController {
     private TestForCacheable testForCacheable;
 
     @RequestMapping("/{name}")
-    public String getHello(@PathVariable String name){
-        return "hello "+name;
+    @ResponseBody
+    public String getHello(@PathVariable String name,@RequestParam("val")String val){
+        return "hello-"+name+"-"+val;
     }
 
-    @RequestMapping("/")
+    @RequestMapping("/aa")
     @NcCat
     public String index(Model model){
         Person single=new Person("aa",1);

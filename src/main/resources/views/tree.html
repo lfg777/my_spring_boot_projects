@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>大M后台管理</title>
+    <link rel="stylesheet" href="sources/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="sources/css/bootstrap-theme.min.css"/>
+</head>
+<style>
+    .node circle {
+        fill: #fff;
+        stroke: steelblue;
+        stroke-width: 1.5px;
+    }
+
+    .node {
+        font: 12px sans-serif;
+    }
+
+    .link {
+        fill: none;
+        stroke: #ccc;
+        stroke-width: 1.5px;
+    }
+</style>
+<body>
+    <div>
+        <ul class="nav nav-tabs" style="margin-top: 20px;">
+            <li role="presentation" >
+                <a href="#">用户标签查询</a>
+            </li>
+            <li>
+                <a href="#" class="active">标签查询</a>
+            </li>
+        </ul>
+    </div>
+<div class="container-fluid jumbotron">
+    <form class="form-inline" style="margin-bottom: 0;">
+        <div class="col-lg-4">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="输入例如：标签code,标签名称" style="width: 300px;"/>
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button"
+                          data-toggle="popover" title="Popover title"
+                          data-content="And here's some amazing content. It's very engaging. Right?"
+                          data-trigger="focus"
+                  id="queryBtn">
+                      <span class="glyphicon glyphicon-time"/> 查询</button>
+                  <button class="btn btn-default" type="button" id="addBtn">新增</button>
+                </span>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">流程修改</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <label id="name" class="form-control"></label>
+                <label id="code" class="form-control">first-c3-h5</label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<!-- Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">新增流程</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body" id="adc">
+                <ul class="nav nav-tabs addModal" >
+                    <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            标签 <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a data-toggle="dropdown"  href="#">流程</a>
+                                <a data-toggle="dropdown"  href="#">步骤</a>
+                                <a data-toggle="dropdown"  href="#">插件</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+
+
+
+                <label id="addName" class="form-control">51信用卡</label>
+                <label id="addCode" class="form-control">first-c3-h5</label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button id="addSubmit" type="button" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+
+    <!-- 模态框   信息删除确认 -->
+    <div class="modal fade" id="delcfmOverhaul">
+        <div class="modal-dialog">
+            <div class="modal-content message_align">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">提交成功</h4>
+                </div>
+                <div class="modal-body">
+                    <!-- 隐藏需要删除的id -->
+                    <input type="hidden" id="deleteHaulId" />
+                    <p>你还没有配置步骤信息，是否进行配置？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"
+                            data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary"
+                            id="deleteHaulBtn">确认</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+    </div>
+        <!-- /.modal-dialog -->
+<!-- Modal -->
+
+
+
+
+
+
+<script src="sources/js/jquery-3.3.1.min.js"></script>
+<script src="sources/js/bootstrap.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="sources/js/tree.js"></script>
+<script>
+    function showModal(value) {
+        $("#myModal").find("#name").text(value);
+        $("#myModal").modal("show");
+    }
+
+    $("#addBtn").click(function (e) {
+        $("#addModal").modal("show");
+    });
+    $(function(){
+
+        $('[data-toggle="popover"]').popover();
+        $('.nav-tabs li').click(function(e){
+            $(".dropdown-toggle").dropdown('toggle');
+        });
+        $("#addSubmit").click(function () {
+            $("#delcfmOverhaul").modal("show");
+        });
+        $("#queryBtn").click(function () {
+            $('#example').popover("destroy");
+        });
+    });
+
+
+    //alert弹出框
+    var myBootAlert = function (msg) {
+        var dialog = bootbox.alert({
+            title: "提示",
+            message: msg, "animate": true
+        });
+        dialog.init(function () {
+            setTimeout(function () {
+                dialog.modal('hide');
+            }, 1500);
+        });
+    };
+
+
+</script>
+</body>
+</html>

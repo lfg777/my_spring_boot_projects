@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>d3</title>
+    <script src="sources/js/d3.min.js"></script>
+</head>
+<body>
+<p>hello world</p>
+<p>hello world</p>
+<h2>hello world</h2>
+<script>
+    d3.select("body").selectAll("p").text("www.ourd3js.com");//d3.select()是选择所有指定元素的第一个。d3.selectAll()
+    var p = d3.select("body").selectAll("p").text("www.ourd3js.com");
+    //修改段落的颜色和字体大下
+    p.style("color","red").style("font-size","34px");
+</script>
+</body>
+</html>

@@ -129,6 +129,11 @@ public class MyController {
 
     }
 
+    @RequestMapping("/popover")
+    public String popoverDemo(Model model) {
+        return "popoverdemo";
+    }
+
     @RequestMapping("/getData")
     @ResponseBody
     public String getData() {

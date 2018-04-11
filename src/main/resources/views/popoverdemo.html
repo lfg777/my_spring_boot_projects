@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>大M后台管理</title>
+    <link rel="stylesheet" href="sources/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="sources/css/bootstrap-theme.min.css"/>
+    <style>
+        .popover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1060;
+            display: none;
+            max-width: 2000px;//我改为了2000px
+        padding: 1px;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: left;
+            text-align: start;
+            text-decoration: none;
+            text-shadow: none;
+            text-transform: none;
+            letter-spacing: normal;
+            word-break: normal;
+            word-spacing: normal;
+            word-wrap: normal;
+            white-space: normal;
+            background-color: #fff;
+            -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0,0,0,.2);
+            border-radius: 6px;
+            -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+            box-shadow: 0 5px 10px rgba(0,0,0,.2);
+            line-break: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+<a id="temp1" tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" title="Dismissible popover">弹出框1</a>
+<a id="temp2" tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover">弹出框2</a>
+
+<div id="LinkDIV" style="float:left;width:200px">
+</div>
+<script src="sources/js/jquery-3.3.1.min.js"></script>
+<script src="sources/js/bootstrap.min.js"></script>
+<script>
+    $(function () {
+        $("#LinkDIV").html('<button type="btn btn-lg btn-primary" data-toggle="popover" id="temp3">弹出框3</button>');
+        $('[data-toggle="popover"]').each(function () {
+            var element = $(this);
+            var id = element.attr('id');
+            var txt = element.html();
+            element.popover({
+                trigger: 'manual',
+                placement: 'bottom', //top, bottom, left or right
+                title: txt,
+                html: 'true',
+                content: ContentMethod(txt),
+
+            }).on("click", function () {
+                var _this = this;
+                $(this).popover("show");
+                $(this).siblings(".popover").on("mouseleave", function () {
+                    $(_this).popover('hide');
+                });
+            }).on("mouseleave", function () {
+                var _this = this;
+                setTimeout(function () {
+                    if (!$(".popover:hover").length) {
+                        $(_this).popover("hide")
+                    }
+                }, 100);
+            });
+        });
+    });
+    function ContentMethod(txt) {
+        return '<table class="table table-bordered"><tr><td>' + txt + '</td><td>BB</td><td>CC</td><td>DD</td></tr>' +
+            '<tr><td>' + txt + '</td><td>BB</td><td>CC</td><td>DD</td></tr>' +
+            '<tr><td>' + txt + '</td><td>BB</td><td>CC</td><td>DD</td></tr>'+
+            '<tr><td>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</td><td>BB</td><td>CC</td><td>DD</td></tr></table>';
+    }
+</script>
+
+</body>
+</html>

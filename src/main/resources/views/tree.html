@@ -42,8 +42,7 @@
                 <input type="text" class="form-control" placeholder="输入例如：标签code,标签名称" style="width: 300px;"/>
                 <span class="input-group-btn">
                   <button class="btn btn-default" type="button"
-                          data-toggle="popover" title="Popover title"
-                          data-content="And here's some amazing content. It's very engaging. Right?"
+                          data-toggle="popover"
                           data-trigger="focus"
                   id="queryBtn">
                       <span class="glyphicon glyphicon-time"/> 查询</button>
@@ -162,15 +161,19 @@
     });
     $(function(){
 
-        $('[data-toggle="popover"]').popover();
         $('.nav-tabs li').click(function(e){
             $(".dropdown-toggle").dropdown('toggle');
         });
         $("#addSubmit").click(function () {
             $("#delcfmOverhaul").modal("show");
         });
-        $("#queryBtn").click(function () {
-            $('#example').popover("destroy");
+        $('[data-toggle="popover"]').popover({
+            trigger:'manual',
+            placement: 'bottom', //top, bottom, left or right
+            html:true,
+            content:'<label>abc</label>'
+        }).on("click",function () {
+            $(this).popover("toggle");
         });
     });
 

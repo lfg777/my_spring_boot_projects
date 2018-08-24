@@ -25,16 +25,16 @@
     }
 </style>
 <body>
-    <div>
-        <ul class="nav nav-tabs" style="margin-top: 20px;">
-            <li role="presentation" >
-                <a href="#">用户标签查询</a>
-            </li>
-            <li>
-                <a href="#" class="active">标签查询</a>
-            </li>
-        </ul>
-    </div>
+<div>
+    <ul class="nav nav-tabs" style="margin-top: 20px;">
+        <li role="presentation">
+            <a href="#">用户标签查询</a>
+        </li>
+        <li>
+            <a href="#" class="active">标签查询</a>
+        </li>
+    </ul>
+</div>
 <div class="container-fluid jumbotron">
     <form class="form-inline" style="margin-bottom: 0;">
         <div class="col-lg-4">
@@ -44,15 +44,20 @@
                   <button class="btn btn-default" type="button"
                           data-toggle="popover"
                           data-trigger="focus"
-                  id="queryBtn">
+                          id="queryBtn">
                       <span class="glyphicon glyphicon-time"/> 查询</button>
                   <button class="btn btn-default" type="button" id="addBtn">新增</button>
                 </span>
             </div>
         </div>
     </form>
+        <div class="dropdown navbar-nav " style="margin-left: 1000px;">
+                <span class="glyphicon glyphicon-th-list dropdown-toggle" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" style="font-size: x-large"><span class="caret"></span></span>
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu">
+                <li><a href="popover">历史信息</a></li>
+            </ul>
+        </div>
 </div>
-
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -82,22 +87,20 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body" id="adc">
-                <ul class="nav nav-tabs addModal" >
+                <ul class="nav nav-tabs addModal">
                     <li role="presentation" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                             标签 <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a data-toggle="dropdown"  href="#">流程</a>
-                                <a data-toggle="dropdown"  href="#">步骤</a>
-                                <a data-toggle="dropdown"  href="#">插件</a>
+                                <a data-toggle="dropdown" href="#">流程</a>
+                                <a data-toggle="dropdown" href="#">步骤</a>
+                                <a data-toggle="dropdown" href="#">插件</a>
                             </li>
                         </ul>
                     </li>
                 </ul>
-
-
 
 
                 <label id="addName" class="form-control">51信用卡</label>
@@ -112,38 +115,36 @@
 </div>
 <!-- Modal -->
 
-    <!-- 模态框   信息删除确认 -->
-    <div class="modal fade" id="delcfmOverhaul">
-        <div class="modal-dialog">
-            <div class="modal-content message_align">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"
-                            aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                    <h4 class="modal-title">提交成功</h4>
-                </div>
-                <div class="modal-body">
-                    <!-- 隐藏需要删除的id -->
-                    <input type="hidden" id="deleteHaulId" />
-                    <p>你还没有配置步骤信息，是否进行配置？</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default"
-                            data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary"
-                            id="deleteHaulBtn">确认</button>
-                </div>
+<!-- 模态框   信息删除确认 -->
+<div class="modal fade" id="delcfmOverhaul">
+    <div class="modal-dialog">
+        <div class="modal-content message_align">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">提交成功</h4>
             </div>
-            <!-- /.modal-content -->
+            <div class="modal-body">
+                <!-- 隐藏需要删除的id -->
+                <input type="hidden" id="deleteHaulId"/>
+                <p>你还没有配置步骤信息，是否进行配置？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">取消
+                </button>
+                <button type="button" class="btn btn-primary"
+                        id="deleteHaulBtn">确认
+                </button>
+            </div>
         </div>
+        <!-- /.modal-content -->
     </div>
-        <!-- /.modal-dialog -->
+</div>
+<!-- /.modal-dialog -->
 <!-- Modal -->
-
-
-
-
 
 
 <script src="sources/js/jquery-3.3.1.min.js"></script>
@@ -159,22 +160,25 @@
     $("#addBtn").click(function (e) {
         $("#addModal").modal("show");
     });
-    $(function(){
+    $(function () {
 
-        $('.nav-tabs li').click(function(e){
+        $('.nav-tabs li').click(function (e) {
             $(".dropdown-toggle").dropdown('toggle');
         });
         $("#addSubmit").click(function () {
             $("#delcfmOverhaul").modal("show");
         });
         $('[data-toggle="popover"]').popover({
-            trigger:'manual',
+            trigger: 'manual',
             placement: 'bottom', //top, bottom, left or right
-            html:true,
-            content:'<label>abc</label>'
-        }).on("click",function () {
+            html: true,
+            content: '<label>abc</label>'
+        }).on("click", function () {
             $(this).popover("toggle");
         });
+
+        $('.dropdown').on('hidden.bs.dropdown', function () {
+        })
     });
 
 

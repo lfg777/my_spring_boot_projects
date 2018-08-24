@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>用户信息查询</title>
+    <link rel="stylesheet" href="sources/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="sources/css/bootstrap-theme.min.css"/>
+    <script src="sources/js/jquery-3.3.1.min.js"></script>
+    <script src="sources/js/bootstrap.min.js"></script>
+    <script src="http://ppdadmin.ppdaicdn.com/ppdAdmin/lib/ace/assets/js/jquery.dataTables.min.js"></script>
+    <script src="http://admin.ppdaicdn.com/res3/DataTables-1.10.10/js/dataTables.bootstrap.min.js"></script>
+    <style>
+        .table {
+            margin-top: 15px;
+        }
+
+        .table th {
+            border-top: 1px;
+        }
+    </style>
+    <script type="text/javascript">
+        $.extend($.fn.dataTable.defaults, {
+            "searching": false,
+            "ordering": true,
+            "bLengthChange": false,
+            "iDisplayLength": 100,
+            "language": {
+                "emptyTable": "表中数据为空",
+                "info": "显示第 _START_ 至 _END_ 个用户，共 _TOTAL_ 个用户",
+                "infoEmpty": "显示第 0 至 0 个用户，共 0 个用户",
+                "infoFiltered": "(从 _MAX_ 个用户中筛选)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "显示 _MENU_ 个用户",
+                "loadingRecords": "载入中...",
+                "processing": "处理中...",
+                "search": "筛选：",
+                "zeroRecords": "没有匹配用户",
+                "paginate": {
+                    "first": "首页",
+                    "last": "末页",
+                    "next": "下一页",
+                    "previous": "上一页"
+                }
+            }
+        });
+    </script>
+</head>
+
+<body>
+
+<div class="container-fluid jumbotron" style="width: 100%">
+    <div style="width: 100%; height: 40px; line-height: 40px; background: #EEEEEE; top: 0; position: fixed; z-index: 100">
+        <h5 style="margin-left: 50px;"><span class="glyphicon glyphicon-random"></span>&nbsp;<b>用户信息查询</b></h5>
+
+    </div>
+    <form class="form-inline" style="margin-left: 500px;">
+        <div class="col-lg-4">
+            <div class="input-group">
+                <input type="search" class="form-control" placeholder="输入例如：标签code,标签名称" style="width: 300px;"/>
+                <button class="btn btn-primary" type="button" id="queryBtn">
+                    <span class="glyphicon glyphicon-search"/> 查询
+                </button>
+            </div>
+        </div>
+        <div class="dropdown navbar-nav " style="margin-left: 300px;">
+            <span class="glyphicon glyphicon-th-list dropdown-toggle" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" style="font-size: x-large"><span class="caret"></span></span>
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu">
+                <li><a href="popover" target="_blank">历史信息</a></li>
+            </ul>
+        </div>
+    </form>
+</div>
+
+<div class="content" style="margin-left: 50px">
+    <div style="border-bottom: 1px solid black; width: 10%">
+        <b>基本信息<span class="glyphicon glyphicon-menu-down"></span></b>
+    </div>
+    <div style="margin-top: 5px;width: 50%">
+        <table class="table table-bordered table-hover ">
+            <thead>
+            <tr>
+                <th>
+                    用户ID
+                </th>
+                <th>
+                    用户额度
+                </th>
+                <th>
+                    用户额度
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>adsfasd</td>
+                <td>adsfasd</td>
+                <td>adsfasd</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="border-bottom: 1px solid black; width: 10%;margin-top: 25px;">
+        <b>标签信息<span class="glyphicon glyphicon-menu-down"></span></b>
+    </div>
+    <div style="margin-top: 5px;width: 50%">
+        <table class="table table-bordered table-hover ">
+            <thead>
+            <tr>
+                <th>
+                    标签编码
+                </th>
+                <th>
+                    标签名称
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <div style="border-bottom: 1px solid black; width: 10%;margin-top: 25px;">
+        <b>流程信息<span class="glyphicon glyphicon-menu-down"></span></b>
+    </div>
+    <div style="margin-top: 5px;width: 50%">
+        <table class="table table-bordered table-hover ">
+            <thead>
+            <tr>
+                <th>
+                    流程编码
+                </th>
+                <th>
+                    流程名称
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div style="border-bottom: 1px solid black; width: 10%;margin-top: 25px;">
+        <b>步骤信息<span class="glyphicon glyphicon-menu-down"></span></b>
+    </div>
+    <div style="margin-top: 5px;width: 50%">
+        <table class="table table-bordered table-hover ">
+            <thead>
+            <tr>
+                <th>
+                    步骤编码
+                </th>
+                <th>
+                    步骤名称
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+</body>
+</html>

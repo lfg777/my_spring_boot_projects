@@ -133,6 +133,10 @@ public class MyController {
     public String popoverDemo(Model model) {
         return "popoverdemo";
     }
+    @RequestMapping("/userInfo")
+    public String userInfo(Model model) {
+        return "userInfo";
+    }
 
     @RequestMapping("/getData")
     @ResponseBody

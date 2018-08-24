@@ -52,9 +52,10 @@ public class MyModifyParametersWrapper extends HttpServletRequestWrapper {
     @Override
     public String getParameter(String name) {
         String[] results = parameterMap.get(name);
-        if (results == null || results.length <= 0)
+        if (results == null || results.length <= 0) {
+
             return null;
-        else {
+        } else {
             System.out.println("修改之前： " + results[0]);
             return modify(results[0]);
         }

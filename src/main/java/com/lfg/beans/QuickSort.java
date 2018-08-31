@@ -5,7 +5,7 @@ package com.lfg.beans;
  * @author fg.Li
  * 2018/8/24:11:24
  * <p>
- * Copyright@www.ppdai.com
+ *
  **/
 public class QuickSort {
 

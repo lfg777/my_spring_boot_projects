@@ -4,7 +4,7 @@ package com.lfg.beans;
  * @author fg.Li
  * 2018/5/30:17:10
  * <p>
- * Copyright@www.ppdai.com
+ *
  **/
 public class Re {
 

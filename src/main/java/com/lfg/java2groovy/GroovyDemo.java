@@ -9,7 +9,7 @@ import javax.script.ScriptException;
  * @author fg.Li
  * 2018/7/24:15:00
  * <p>
- * Copyright@www.ppdai.com
+ *
  **/
 public class GroovyDemo {
 

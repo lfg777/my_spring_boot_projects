@@ -1,4 +1,4 @@
-package com.lfg.beans;
+package com.lfg.algorithm;
 
 /**
  *快速排序算法

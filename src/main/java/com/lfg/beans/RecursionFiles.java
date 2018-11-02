@@ -23,8 +23,9 @@ public class RecursionFiles {
             }
 
         }
-        System.out.println(file.getName());
-
+        if (file.isFile()) {
+            System.out.println(file.getName());
+        }
     }
 
 

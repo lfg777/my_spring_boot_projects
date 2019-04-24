@@ -6,4 +6,12 @@ package com.lfg.service;
  * <p>
  **/
 public class SimulateOOMDemo {
+
+    public static void main(String[] args) {
+
+
+
+
+
+    }
 }

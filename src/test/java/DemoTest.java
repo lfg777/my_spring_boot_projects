@@ -42,6 +42,7 @@ public class DemoTest {
     public static void genericity() {
         List<String> l1 = new ArrayList<String>();
         List<Integer> l2 = new ArrayList<Integer>();
+
         System.out.println(l1.getClass() == l2.getClass());
     }
 

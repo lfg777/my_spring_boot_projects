@@ -1,4 +1,4 @@
-package com.lfg.service;
+package com.lfg.juc;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;

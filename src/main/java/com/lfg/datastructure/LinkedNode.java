@@ -1,6 +1,7 @@
 package com.lfg.datastructure;
 
 /**
+ * 双向链表节点
  * @author fg.Li
  * 2019/5/14:16:52
  * <p>

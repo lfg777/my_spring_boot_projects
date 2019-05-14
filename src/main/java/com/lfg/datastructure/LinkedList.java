@@ -19,12 +19,17 @@ public class LinkedList {
     public void reverse() {
 
         LinkedNode current = head;
+        LinkedNode temp = null;
+        tail = head;
         while (current != null) {
-
+            temp = current.getPre();
+            current.setPre(current.getNext());
+            current.setNext(temp);
+            current = current.getPre();
         }
-
-
-
+        if (temp != null) {
+            head = temp.getPre();
+        }
 
     }
 
@@ -77,10 +82,14 @@ public class LinkedList {
         list.pushNode(3);
         list.pushNode(4);
         list.pushNode(5);
+        list.pushNode(6);
+        System.out.println("========正序遍历========");
         list.values();
-        System.out.println("================");
+        System.out.println("========倒序遍历========");
         list.reverseValues();
-
+        System.out.println("========反转========");
+        list.reverse();
+        list.values();
     }
 
 

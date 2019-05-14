@@ -10,14 +10,13 @@
 **继承体系**
 1.7到1.8 hashMap总体结构没有太大的变化，继承体系依旧是继承AbstractMap,实现Map，Cloneable,Serializable接口
 
-(```)
+```
 HashMap<K,V> extends AbstractMap<K,V> implements Map<K,V>, Cloneable, Serializable
-(```)
+```
 
 **内部属性**
-
 _1.8_
 
-(```)
+```
 
-(```)
+```

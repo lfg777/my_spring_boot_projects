@@ -11,6 +11,10 @@ public class SinglyLinkedList<T> {
 
     private int size;
 
+    /**
+     *单向链表追加
+     * @param t
+     */
     public void addLast(T t) {
         if (null == head) {
             head = new Node(t,null);
@@ -25,6 +29,9 @@ public class SinglyLinkedList<T> {
         size++;
     }
 
+    /**
+     *遍历
+     */
     public void values() {
         Node cur = head;
         while (null != cur.getNext()) {
@@ -34,17 +41,36 @@ public class SinglyLinkedList<T> {
         System.out.println(cur.getValue());
     }
 
+    /**
+     *反转 迭代
+     */
     public void reverse() {
         Node cur = head;
-
+        Node pre = null;
         while (null != cur.getNext()) {
             Node next = cur.getNext();
-            Node nnext = next.getNext();
-
-
-
+            cur.setNext(pre);
+            pre= cur;
+            cur = next;
         }
+        cur.setNext(pre);
+        head = cur;
+
     }
+
+    /**
+     * 递归反转
+     */
+    public void reverse(Node node) {
+        if (node.getNext() == null || node == null) {
+            head = node;
+            return;
+        }
+        reverse(node.getNext());
+        node.getNext().setNext(node);
+        node.setNext(null);
+    }
+
 
     public static void main(String[] args) {
         SinglyLinkedList<Integer> list = new SinglyLinkedList();
@@ -57,6 +83,11 @@ public class SinglyLinkedList<T> {
         System.out.println("======遍历======");
         list.values();
         System.out.println("======size:"+list.size+"======");
-
+        System.out.println("======反转======");
+        list.reverse();
+        list.values();
+        System.out.println("======递归反转======");
+        list.reverse(list.head);
+        list.values();
     }
 }

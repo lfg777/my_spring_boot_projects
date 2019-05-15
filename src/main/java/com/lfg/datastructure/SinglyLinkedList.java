@@ -7,9 +7,9 @@ package com.lfg.datastructure;
  **/
 public class SinglyLinkedList<T> {
 
-    private transient Node head;
+    protected transient Node head;
 
-    private int size;
+    protected int size;
 
     /**
      *单向链表追加
@@ -71,6 +71,64 @@ public class SinglyLinkedList<T> {
         node.setNext(null);
     }
 
+    /**
+     *获取倒数第K个节点，如果链表维护了长度size,则倒数第k个即为正数第（n-k+1）个
+     * 如果没有size字段，则反转，再取第K个
+     */
+    public <T> T getReverseIndexNode(int index) {
+        if (index > size || index <= 0) {
+            return null;
+        }
+        Node node = head;
+        int curIndex = 1;
+        while (node.getNext() != null) {
+            if (curIndex == size - index + 1) {
+                break;
+            }
+            node = node.getNext();
+            curIndex++;
+        }
+        return (T) node.getValue();
+    }
+
+    /**
+     * 获取倒数第K个数，无size，不遍历情况。
+     * 这里需要声明两个指针：即两个结点型的变量first和second，首先让first和second都指向第一个结点，然后让second结点往后挪k-1个位置，此时first和second就间隔了k-1个位置，
+     * 然后整体向后移动这两个节点，直到second节点走到最后一个结点的时候，此时first节点所指向的位置就是倒数第k个节点的位置。时间复杂度为O（n）
+     * @param index
+     * @param <T>
+     * @return
+     */
+    public <T> T getReverseIndexNodeQk(int index) {
+        Node first = head;
+        Node secode = head;
+
+        for (int i=0; i<index-1;i++ ) {
+            secode = secode.getNext();
+        }
+
+        for (; secode.getNext() != null; ) {
+            first = first.getNext();
+            secode = secode.getNext();
+        }
+        return (T)first.getValue();
+
+
+    }
+
+
+    public <T> T getMidNode() {
+        Node first = head;
+        Node secode = head;
+
+        while (secode != null && secode.getNext() != null) {
+            first = first.getNext();
+            secode = secode.getNext().getNext();
+        }
+        return (T)first.getValue();
+    }
+
+
 
     public static void main(String[] args) {
         SinglyLinkedList<Integer> list = new SinglyLinkedList();
@@ -89,5 +147,12 @@ public class SinglyLinkedList<T> {
         System.out.println("======递归反转======");
         list.reverse(list.head);
         list.values();
+        System.out.println("======倒数第4个值:3======");
+        System.out.println(""+list.getReverseIndexNode(4));
+        System.out.println("======倒数第4个值:3======");
+        System.out.println(""+list.getReverseIndexNodeQk(4));
+        System.out.println("======倒数第4个值:4======");
+        list.getMidNode();
+
     }
 }

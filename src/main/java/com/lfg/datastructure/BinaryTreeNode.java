@@ -1,3 +1,5 @@
+package com.lfg.datastructure;
+
 //二叉树节点
 public class BinaryTreeNode {
     private int data;

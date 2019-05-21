@@ -43,7 +43,7 @@ public class QuickSort {
     public static void sort(int[] a) {
         quickSort(a, 0, a.length - 1);
         for (int i : a) {
-            System.out.println(i+"");
+            System.out.printf(i+" ");
         }
     }
 

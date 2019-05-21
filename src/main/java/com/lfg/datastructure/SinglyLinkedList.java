@@ -116,7 +116,11 @@ public class SinglyLinkedList<T> {
 
     }
 
-
+    /**
+     * 获取中间节点
+     * @param <T>
+     * @return
+     */
     public <T> T getMidNode() {
         Node first = head;
         Node secode = head;
@@ -128,6 +132,52 @@ public class SinglyLinkedList<T> {
         return (T)first.getValue();
     }
 
+    /**
+     * 判断链表是否是回文链表
+     *能否用 O(n) 时间复杂度和 O(1) 空间复杂度解决此题？
+     * 快慢指针，先找到中间节点，反转后半部分，再比较
+     */
+    public boolean isPalindrome() {
+        Node slow = head;
+        Node fast = head;
+        while (fast.getNext() != null && fast.getNext().getNext() != null) {
+            slow = slow.getNext();
+            fast = fast.getNext().getNext();
+        }
+
+        Node node = reverseHalf(slow.getNext());
+        slow = head;
+        while (node != null) {
+            if (slow.getValue() != node.getValue()) {
+                return false;
+            }
+            slow = slow.getNext();
+            node = node.getNext();
+        }
+        return true;
+    }
+
+    public static void isPalindrome(SinglyLinkedList<Integer> list) {
+        list.addLast(6);
+        list.addLast(5);
+        list.addLast(4);
+        list.addLast(3);
+        list.addLast(2);
+        list.addLast(1);
+        System.out.println("====是否是回文====");
+        System.out.println(list.isPalindrome());
+
+    }
+
+    private Node reverseHalf(Node node) {
+        if (node == null || node.getNext() == null) {
+            return node;
+        }
+        Node next = reverseHalf(node.getNext());
+        node.getNext().setNext(node);
+        node.setNext(null);
+        return next;
+    }
 
 
     public static void main(String[] args) {
@@ -153,6 +203,7 @@ public class SinglyLinkedList<T> {
         System.out.println(""+list.getReverseIndexNodeQk(4));
         System.out.println("======倒数第4个值:4======");
         list.getMidNode();
+        SinglyLinkedList.isPalindrome(list);
 
     }
 }

@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>spring-boot-thymeleaf</groupId>
-  <artifactId>spring-boot-thymeleaf</artifactId>
+  <groupId>spring-boot-project</groupId>
+  <artifactId>spring-boot-project</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>spring-boot-thymeleaf Maven Webapp</name>
+  <name>spring-boot-project Maven Webapp</name>
   <url>http://maven.apache.org</url>
 
   <parent>

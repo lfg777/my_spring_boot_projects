@@ -1,0 +1,35 @@
+@startuml
+skinparam sequence {
+    ArrowColor #660066
+    ActorBorderColor #660066
+    LifeLineBorderColor #660066
+    LifeLineBackgroundColor #f2ccff
+    ParticipantBorderColor #660066
+    ParticipantBackgroundColor #f9e6ff
+    SequenceDividerBackgroundColor #f2ccff
+    SequenceGroupBorderColor #660066
+    SequenceGroupBackgroundColor #f9e6ff
+    NoteBackgroundColor #f2ccff
+    NoteBorderColor #660066
+    FontName Arial
+}
+activate riskbizopr
+riskbizopr -> modeljob++: 提交数据补录任务 /supplement/submit
+return
+modeljob -> modeljob++: 检查是否有正式运行版本
+modeljob -> modeljob: 幂等校验（提交时间段是否有正在执行中的任务）
+modeljob->dataphin:查询样本表/数据表分区信息
+modeljob -> modeljob: 拆分补数数据时间段
+loop 连续时间段任务
+ alt 特征类型
+     modeljob->modeljob:检测样本是否包含补录时间段数据
+     modeljob->dataphin:执行特征节点及模型节点补录数据任务
+ end
+ alt 数据表类型
+     modeljob->modeljob:检测数据表是否包含补录时间段数据
+     modeljob->dataphin:执行模型节点补录数据任务
+ end
+end
+modeljob->modeljob:查询补录数据任务状态，更新补录任务状态
+
+@enduml
